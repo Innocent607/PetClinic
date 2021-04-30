@@ -20,6 +20,7 @@
 	<description>A project for Spring Boot on Pet Clinic, a hospital for our lovely home buddies.</description>
 	<properties>
 		<java.version>1.8.0_281</java.version>
+		<start-class>pet-clinic-web.com.example.PetClinic.PetClinicApplication</start-class>
 	</properties>
 	<dependencies>
 		<dependency>

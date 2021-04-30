@@ -13,7 +13,6 @@
 
     <properties>
         <java.version>1.8.0_281</java.version>
-        <start-class>com.example.PetClinic.PetClinicApplication</start-class>
     </properties>
 
     <dependencies>
