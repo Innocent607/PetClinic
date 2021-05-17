@@ -1,11 +1,11 @@
 package com.example.PetClinic.services.map;
 
 import com.example.PetClinic.model.Pet;
-import com.example.PetClinic.services.CrudService;
+import com.example.PetClinic.services.PetService;
 
 import java.util.Set;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Set<Pet> findAll() {
