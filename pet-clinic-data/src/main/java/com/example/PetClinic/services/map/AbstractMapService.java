@@ -1,13 +1,11 @@
 package com.example.PetClinic.services.map;
 
+import com.example.PetClinic.model.BaseEntity;
 import com.sun.javafx.collections.MappingChange;
 import org.yaml.snakeyaml.events.Event;
 
 import javax.persistence.Id;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /*
     Abstract class:
@@ -15,8 +13,8 @@ import java.util.Set;
         to create objects (to access it, it must be
         inherited from another class)
  */
-public abstract class AbstractMapService<T, ID> {
-    protected Map<ID, T> map = new HashMap<>();
+public abstract class AbstractMapService<T extends BaseEntity, ID extends Long> {
+    protected Map<Long, T> map = new HashMap<>();
 
     Set<T> findAll(){
         return new HashSet<>(map.values());
@@ -27,7 +25,17 @@ public abstract class AbstractMapService<T, ID> {
     }
 
     T save(ID id, T object){
-        map.put(id, object);
+
+        if(object != null){
+            if(object.getId() == null){
+                object.setId(getNextId());
+            }
+
+            map.put(object.getId(), object);
+        }
+        else {
+            throw  new RuntimeException("Object cannot be null");
+        }
 
         return object;
     }
@@ -38,5 +46,17 @@ public abstract class AbstractMapService<T, ID> {
 
     void delete(T object) {
         map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+    }
+
+    private Long getNextId(){
+
+        Long nextId = null;
+        try {
+            nextId = Collections.max(map.keySet()) + 1;
+        }
+        catch (NoSuchElementException e){
+            nextId = 1L;
+        }
+        return nextId;
     }
 }
