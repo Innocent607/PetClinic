@@ -1,8 +1,11 @@
 package com.example.PetClinic.bootstrap;
 
 import com.example.PetClinic.model.Owner;
+import com.example.PetClinic.model.PetType;
 import com.example.PetClinic.model.Vet;
 import com.example.PetClinic.services.OwnerService;
+import com.example.PetClinic.services.PetService;
+import com.example.PetClinic.services.PetTypeService;
 import com.example.PetClinic.services.VetService;
 import com.example.PetClinic.services.map.OwnerServiceMap;
 import com.example.PetClinic.services.map.VetServiceMap;
@@ -15,9 +18,11 @@ public class DataLoader implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
     @Autowired
-    public DataLoader(OwnerService ownerService, VetService vetService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+        this.petTypeService = petTypeService;
         this.ownerService = ownerService;
         this.vetService = vetService;
     }
@@ -25,6 +30,14 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception
     {
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        PetType savedDogPetType = petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        PetType savedCatPetType = petTypeService.save(cat);
+
         System.out.println("Adding Owners to the data table ...");
 
         Owner owner1 = new Owner();
