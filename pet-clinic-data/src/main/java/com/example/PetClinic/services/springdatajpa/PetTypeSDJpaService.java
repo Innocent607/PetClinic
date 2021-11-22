@@ -28,7 +28,7 @@ public class PetTypeSDJpaService implements PetTypeService {
     public Set<PetType> findAll() {
         Set<PetType> petTypes = new HashSet<>();
 
-        petTypes.forEach(petTypes::add);
+        petTypeRepository.findAll().forEach(petTypes::add);
         return petTypes;
     }
 
