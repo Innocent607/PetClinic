@@ -2,8 +2,6 @@ package com.example.PetClinic.bootstrap;
 
 import com.example.PetClinic.model.*;
 import com.example.PetClinic.services.*;
-import com.example.PetClinic.services.map.OwnerServiceMap;
-import com.example.PetClinic.services.map.VetServiceMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
