@@ -3,7 +3,9 @@ package com.example.PetClinic.services.springdatajpa;
 import com.example.PetClinic.model.Pet;
 import com.example.PetClinic.repositories.PetRepository;
 import com.example.PetClinic.services.PetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +14,8 @@ import java.util.Set;
  * Created by Onalethata I. L. Maswabi
  * AKA Inno607
  */
-
+@Service
+@Profile("springdatajpa")
 public class PetSDJpaService implements PetService {
 
     private final PetRepository petRepository;

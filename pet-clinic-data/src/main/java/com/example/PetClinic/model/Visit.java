@@ -1,7 +1,5 @@
 package com.example.PetClinic.model;
 
-import org.hibernate.annotations.Cache;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -9,7 +7,7 @@ import java.time.LocalDate;
 @Table(name = "visits")
 public class Visit extends BaseEntity {
 
-    @Column(name = "data")
+    @Column(name = "date")
     private LocalDate date;
 
     @Column(name = "description")

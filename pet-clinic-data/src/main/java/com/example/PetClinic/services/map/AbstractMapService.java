@@ -1,10 +1,6 @@
 package com.example.PetClinic.services.map;
 
 import com.example.PetClinic.model.BaseEntity;
-import com.sun.javafx.collections.MappingChange;
-import org.yaml.snakeyaml.events.Event;
-
-import javax.persistence.Id;
 import java.util.*;
 
 /*

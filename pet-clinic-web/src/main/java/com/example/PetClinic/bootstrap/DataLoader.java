@@ -2,7 +2,6 @@ package com.example.PetClinic.bootstrap;
 
 import com.example.PetClinic.model.*;
 import com.example.PetClinic.services.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +16,7 @@ public class DataLoader implements CommandLineRunner {
     private final SpecialityService specialityService;
     private final VisitService visitService;
 
-    @Autowired
+    //@Autowired
     public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
                       SpecialityService specialityService, VisitService visitService) {
         this.petTypeService = petTypeService;
@@ -29,7 +28,12 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        loadData();
+
+        int count = petTypeService.findAll().size();
+        if (count == 0){
+            loadData();
+        }
+
     }
 
     private void loadData() {
@@ -43,15 +47,15 @@ public class DataLoader implements CommandLineRunner {
         PetType savedCatPetType = petTypeService.save(cat);
 
         Speciality radiologist = new Speciality();
-        radiologist.setDescription("radiology");
+        radiologist.setDescription("Radiology");
         Speciality savedRadiologist = specialityService.save(radiologist);
 
         Speciality surgeon = new Speciality();
-        surgeon.setDescription("surgery");
+        surgeon.setDescription("Surgery");
         Speciality savedSurgeon = specialityService.save(surgeon);
 
         Speciality dentistry = new Speciality();
-        dentistry.setDescription("dentistry");
+        dentistry.setDescription("Dentistry");
         Speciality savedDentistry = specialityService.save(dentistry);
 
         System.out.println("Adding Owners to the data table ...");
